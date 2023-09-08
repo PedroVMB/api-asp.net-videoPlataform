@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using API_ASP_VIDEOS_PLATAFORM.Data.DTO.Addres;
+using System.ComponentModel.DataAnnotations;
 
 namespace API_ASP_VIDEOS_PLATAFORM.Data.DTO.Person;
 
@@ -9,6 +10,8 @@ public class CreatePersonDto
 
     [Required(ErrorMessage = "A data de nascimento é obrigatória.")]
     public string DateOfBirth { get; set; }
+
+    public string? Biometry { get; set; }
 
     [Required(ErrorMessage = "O CPF é obrigatório.")]
     [RegularExpression(@"^\d{3}\.\d{3}\.\d{3}-\d{2}$", ErrorMessage = "CPF inválido. O formato correto é XXX.XXX.XXX-XX")]
@@ -23,6 +26,8 @@ public class CreatePersonDto
     public string Email { get; set; }
 
     public string Profission { get; set; }
+
+    public CreateAddressDto? Address{ get; set; }
 
     public int AddresId { get; set; }
 }

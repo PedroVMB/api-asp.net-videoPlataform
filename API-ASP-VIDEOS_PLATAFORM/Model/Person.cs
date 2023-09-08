@@ -11,7 +11,8 @@ public class Person
 
     [Required]
     public string Name { get; set; }
-    public string Biometry { get; set; }
+    public string? Biometry { get; set; }
+
 
     public string DateOfBirth { get; set; }
 

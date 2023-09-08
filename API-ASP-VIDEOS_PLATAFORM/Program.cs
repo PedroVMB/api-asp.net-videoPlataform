@@ -1,4 +1,5 @@
 using API_ASP_VIDEOS_PLATAFORM.Data;
+using API_ASP_VIDEOS_PLATAFORM.Profiles;
 using API_ASP_VIDEOS_PLATAFORM.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,7 @@ builder.Services.AddDbContext<VideoPlataformContext>(opts =>
 builder.Services.AddTransient<TeacherService>();
 
 // Configurar AutoMapper
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(typeof(TeacherProfile));
 
 // Configurar controllers e JSON serialization
 builder.Services.AddControllers().AddNewtonsoftJson();

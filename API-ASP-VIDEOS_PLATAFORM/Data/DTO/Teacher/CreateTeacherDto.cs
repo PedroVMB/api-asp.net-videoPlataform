@@ -12,7 +12,7 @@ namespace API_ASP_VIDEOS_PLATAFORM.Data.DTO.Teacher
         public CreatePersonDto PersonData { get; set; }
 
         [Required(ErrorMessage = "Os dados do endereço são obrigatórios.")]
-        public CreateAddressDto AddressData { get; set; }
+        public CreateAddressDto? AddressData { get; set; }
     }
 
 }
