@@ -1,18 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using System.Text.RegularExpressions;
 
-namespace API_ASP_VIDEOS_PLATAFORM.Model;
+namespace API_ASP_VIDEOS_PLATAFORM.Data.DTO.Person;
 
-public class Person
+public class UpdatePersonDto
 {
-    [Key]
-    public int Id { get; set; }
-
-    [Required]
+    [Required(ErrorMessage = "O nome é obrigatório.")]
     public string Name { get; set; }
-    public string Biometry { get; set; }
 
+    [Required(ErrorMessage = "A data de nascimento é obrigatória.")]
     public string DateOfBirth { get; set; }
 
     [Required(ErrorMessage = "O CPF é obrigatório.")]
@@ -27,8 +22,8 @@ public class Person
     [EmailAddress(ErrorMessage = "Formato de e-mail inválido.")]
     public string Email { get; set; }
 
-    public int AddressId { get; set; }
+    public string Profission { get; set; }
 
-    public virtual Teacher Teacher { get; set; }
-    public virtual Address Address { get; set; }
+
+    
 }

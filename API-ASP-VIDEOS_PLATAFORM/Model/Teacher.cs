@@ -8,7 +8,9 @@ public class Teacher
     [Required]
     public int Id { get; set; }
 
-    public virtual Person person { get; set; }
-    
+    public bool IsActive { get; set; }
+
+    public int PersonId { get; set; }
+    public virtual Person Person { get; set; }
 
 }
