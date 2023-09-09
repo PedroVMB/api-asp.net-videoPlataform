@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_ASP_VIDEOS_PLATAFORM.Migrations
 {
     [DbContext(typeof(VideoPlataformContext))]
-    [Migration("20230908135347_create-table-teachers-address-person")]
-    partial class createtableteachersaddressperson
+    [Migration("20230909141424_add-table-teacher-student-people-address")]
+    partial class addtableteacherstudentpeopleaddress
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,7 +63,7 @@ namespace API_ASP_VIDEOS_PLATAFORM.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Address");
                 });
 
             modelBuilder.Entity("API_ASP_VIDEOS_PLATAFORM.Model.Person", b =>
@@ -76,7 +76,6 @@ namespace API_ASP_VIDEOS_PLATAFORM.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Biometry")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Cpf")
@@ -111,6 +110,26 @@ namespace API_ASP_VIDEOS_PLATAFORM.Migrations
                     b.ToTable("People");
                 });
 
+            modelBuilder.Entity("API_ASP_VIDEOS_PLATAFORM.Model.Student", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonId")
+                        .IsUnique();
+
+                    b.ToTable("Students");
+                });
+
             modelBuilder.Entity("API_ASP_VIDEOS_PLATAFORM.Model.Teacher", b =>
                 {
                     b.Property<int>("Id")
@@ -142,6 +161,17 @@ namespace API_ASP_VIDEOS_PLATAFORM.Migrations
                     b.Navigation("Address");
                 });
 
+            modelBuilder.Entity("API_ASP_VIDEOS_PLATAFORM.Model.Student", b =>
+                {
+                    b.HasOne("API_ASP_VIDEOS_PLATAFORM.Model.Person", "Person")
+                        .WithOne("Student")
+                        .HasForeignKey("API_ASP_VIDEOS_PLATAFORM.Model.Student", "PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Person");
+                });
+
             modelBuilder.Entity("API_ASP_VIDEOS_PLATAFORM.Model.Teacher", b =>
                 {
                     b.HasOne("API_ASP_VIDEOS_PLATAFORM.Model.Person", "Person")
@@ -161,6 +191,9 @@ namespace API_ASP_VIDEOS_PLATAFORM.Migrations
 
             modelBuilder.Entity("API_ASP_VIDEOS_PLATAFORM.Model.Person", b =>
                 {
+                    b.Navigation("Student")
+                        .IsRequired();
+
                     b.Navigation("Teacher")
                         .IsRequired();
                 });

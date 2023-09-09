@@ -32,4 +32,6 @@ public class Person
 
     public virtual Teacher Teacher { get; set; }
     public virtual Address Address { get; set; }
+
+    public virtual Student Student { get; set; }
 }

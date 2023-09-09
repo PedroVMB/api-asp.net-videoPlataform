@@ -35,8 +35,12 @@ public class TeacherProfile : Profile
             .ForMember(dest => dest.Person, opt => opt.MapFrom(src => src.Person));
 
         CreateMap<Person, ReadPersonDto>();
-
         CreateMap<Address, ReadAddressDto>();
+
+
+
+
+
 
 
 
