@@ -38,5 +38,7 @@ public class VideoPlataformContext : DbContext
     public DbSet<Address> Address { get; set; }
 
     public DbSet<Student> Students { get; set; }
+
+    public DbSet<Video> Videos { get; set; }
 }
 
