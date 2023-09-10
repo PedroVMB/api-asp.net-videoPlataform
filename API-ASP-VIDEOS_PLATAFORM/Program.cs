@@ -2,10 +2,7 @@ using API_ASP_VIDEOS_PLATAFORM.Data;
 using API_ASP_VIDEOS_PLATAFORM.Profiles;
 using API_ASP_VIDEOS_PLATAFORM.services;
 using API_ASP_VIDEOS_PLATAFORM.Services;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +15,12 @@ builder.Services.AddDbContext<VideoPlataformContext>(opts =>
 // Registrar o serviço TeacherService
 builder.Services.AddTransient<TeacherService>();
 builder.Services.AddTransient<StudentService>();
+builder.Services.AddTransient<VideoService>();
 
 // Configurar AutoMapper
 builder.Services.AddAutoMapper(typeof(TeacherProfile));
 builder.Services.AddAutoMapper(typeof(StudentProfile));
+builder.Services.AddAutoMapper(typeof(VideoProfile));
 
 // Configurar controllers e JSON serialization
 builder.Services.AddControllers().AddNewtonsoftJson();
