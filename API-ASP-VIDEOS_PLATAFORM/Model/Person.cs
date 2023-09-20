@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
@@ -27,6 +28,10 @@ public class Person
     [Required(ErrorMessage = "O e-mail é obrigatório.")]
     [EmailAddress(ErrorMessage = "Formato de e-mail inválido.")]
     public string Email { get; set; }
+
+    [Required]
+    [PasswordPropertyText]
+    public string Password { get; set; }
 
     public int AddressId { get; set; }
 

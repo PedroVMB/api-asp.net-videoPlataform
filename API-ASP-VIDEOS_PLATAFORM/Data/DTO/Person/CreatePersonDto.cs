@@ -1,4 +1,5 @@
 ﻿using API_ASP_VIDEOS_PLATAFORM.Data.DTO.Addres;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace API_ASP_VIDEOS_PLATAFORM.Data.DTO.Person;
@@ -24,6 +25,10 @@ public class CreatePersonDto
     [Required(ErrorMessage = "O e-mail é obrigatório.")]
     [EmailAddress(ErrorMessage = "Formato de e-mail inválido.")]
     public string Email { get; set; }
+
+    [Required]
+    [PasswordPropertyText]
+    public string Password { get; set; }
 
     public string Profission { get; set; }
 
